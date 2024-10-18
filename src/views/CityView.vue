@@ -9,7 +9,7 @@ import AsyncCityView from "@/components/AsyncCityView.vue";
       <AsyncCityView />
       <!-- loading state via #fallback slot -->
       <template #fallback>
-        <p>Loading...</p>
+        <p class="text-center mt-12">Loading...</p>
       </template>
     </Suspense>
   </div>
