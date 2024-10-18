@@ -86,7 +86,7 @@ const getSearchResults = () => {
       <Suspense>
         <CityList />
         <template #fallback>
-          <p>. . . Loading</p>
+          <p class="text-center mt-12">Loading...</p>
         </template>
       </Suspense>
     </div>
