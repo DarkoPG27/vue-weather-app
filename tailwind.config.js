@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
+  content: ["./public/**/*.html", "./src/**/*.{js,jsx,ts,tsx,vue}"],
   theme: {
     extend: {
       colors: {
@@ -9,7 +9,7 @@ export default {
       },
     },
     fontFamily: {
-      Roboto: ["Roboto, sans-serif"],
+      Roboto: ["Roboto", "sans-serif"],
     },
     container: {
       padding: "2rem",
