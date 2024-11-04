@@ -1,5 +1,6 @@
 <script setup>
 import AsyncCityView from "@/components/AsyncCityView.vue";
+import CityViewSkeleton from "@/components/CityViewSkeleton.vue";
 </script>
 
 <template>
@@ -9,7 +10,7 @@ import AsyncCityView from "@/components/AsyncCityView.vue";
       <AsyncCityView />
       <!-- loading state via #fallback slot -->
       <template #fallback>
-        <p class="text-center mt-12">Loading...</p>
+        <CityViewSkeleton />
       </template>
     </Suspense>
   </div>

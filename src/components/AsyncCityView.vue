@@ -10,6 +10,8 @@ const getWeatherData = async () => {
       `https://api.openweathermap.org/data/2.5/forecast?lat=${route.query.lat}&lon=${route.query.lng}&appid=9983727643e134037394ff475299d61a&units=metric`
     );
 
+    await new Promise((res) => setTimeout(res, 1000));
+
     return weatherData;
   } catch (error) {
     console.log(error);
@@ -111,7 +113,9 @@ const duplicateCity = JSON.parse(localStorage.getItem("savedCities")).filter(
     <!--Hourly Weather  -->
     <div class="max-w-screen-md w-full py-12">
       <div class="mx-8 text-white">
-        <h2 class="mb-4 capitalize">5 day weather forecast</h2>
+        <h2 class="mb-4 capitalize">
+          5 day weather forecast data with 3-hour step
+        </h2>
         <div
           class="flex gap-10 overflow-x-scroll [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500"
         >
