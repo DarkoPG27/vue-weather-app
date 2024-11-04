@@ -14,12 +14,14 @@ const getCities = async () => {
     savedCities.value.forEach((city) => {
       request.push(
         axios.get(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${city.coord.lat}&lon=${city.coord.lng}&exclude={part}&appid=ee541c0de29e1bd2a56852b086297436&units=metric`
+          `https://api.openweathermap.org/data/2.5/weather?lat=${city.coord.lat}&lon=${city.coord.lng}&exclude={part}&appid=9983727643e134037394ff475299d61a&units=metric`
         )
       );
     });
 
     const weatherData = await Promise.all(request);
+
+    console.log(weatherData);
 
     weatherData.forEach((value, index) => {
       savedCities.value[index].weather = value.data;
