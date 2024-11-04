@@ -28,6 +28,18 @@ const removeCity = () => {
     name: "home",
   });
 };
+
+console.log("route", route.query);
+console.log(
+  "cities",
+  JSON.parse(localStorage.getItem("savedCities")).filter(
+    (city) => city.id === route.query.id
+  ).length
+);
+
+const duplicateCity = JSON.parse(localStorage.getItem("savedCities")).filter(
+  (city) => city.id === route.query.id
+).length;
 </script>
 
 <template>
@@ -44,7 +56,7 @@ const removeCity = () => {
 
     <!-- Banner -->
     <div
-      v-if="route.query.preview"
+      v-if="route.query.preview && duplicateCity === 0"
       class="text-white p-4 bg-weather-primary z w-full text-center"
     >
       <p>
