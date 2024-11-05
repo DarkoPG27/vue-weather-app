@@ -24,41 +24,20 @@ const router = useRouter();
 
 const removeCity = () => {
   const cities = JSON.parse(localStorage.getItem("savedCities"));
-  const updatedCities = cities.filter((city) => city.id !== route.query.id);
+  const updatedCities = cities?.filter((city) => city.id !== route.query.id);
   localStorage.setItem("savedCities", JSON.stringify(updatedCities));
   router.push({
     name: "home",
   });
 };
-
-console.log("route", route.query);
-console.log(
-  "cities",
-  JSON.parse(localStorage.getItem("savedCities")).filter(
-    (city) => city.id === route.query.id
-  ).length
-);
-
-const duplicateCity = JSON.parse(localStorage.getItem("savedCities")).filter(
-  (city) => city.id === route.query.id
-).length;
 </script>
 
 <template>
   <div class="flex flex-col flex-1 items-center">
-    <!--  <div>
-      <div v-for="item in weatherData.data.list" :key="item.dt">
-         <CityCard :city="city" @click="goToCityView(city)" />
-        {{ item.dt_txt }}
-        Min temp: {{ item.main.temp_min }}&deg; Max temp:
-        {{ item.main.temp_max }}&deg; Temp: {{ item.main.temp }}&deg; Feels
-        like:{{ item.main.feels_like }}&deg;
-      </div>
-    </div> -->
-
     <!-- Banner -->
+
     <div
-      v-if="route.query.preview && duplicateCity === 0"
+      v-if="route.query.preview === 'true'"
       class="text-white p-4 bg-weather-primary z w-full text-center"
     >
       <p>

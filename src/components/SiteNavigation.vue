@@ -3,6 +3,7 @@ import { RouterLink, useRoute, useRouter } from "vue-router";
 import BaseModal from "./BaseModal.vue";
 import { ref } from "vue";
 import { uid } from "uid";
+
 const modalActive = ref(null);
 
 const toggleModal = () => {
@@ -58,7 +59,7 @@ const addCity = () => {
         ></i>
         <i
           @click="addCity"
-          v-if="route.query.preview"
+          v-if="route.query.preview === 'true'"
           class="fa-solid fa-plus text-xl hover:text-weather-secondary duration-150 cursor-pointer"
         ></i>
       </div>

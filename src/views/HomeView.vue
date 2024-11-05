@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import axios from "axios";
-import { useRouter } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import CityList from "@/components/CityList.vue";
 import CityCardSkeleton from "@/components/CityCardSkeleton.vue";
 
@@ -9,11 +9,20 @@ const searchQuery = ref("");
 const queryTimeout = ref(null);
 
 const router = useRouter();
+const route = useRoute();
+
+console.log("route", route.params);
 
 const previewCity = (searchResult) => {
-  console.log(searchResult);
+  const duplicateCity = JSON.parse(localStorage.getItem("savedCities")).filter(
+    (city) => city.city === searchResult.text
+  );
+
+  console.log("duplicateCity", duplicateCity);
+
   const [city, state] = searchResult.place_name.split(",");
   console.log(city, state);
+  console.log("ASDAS", city === duplicateCity[0]?.city);
   router.push({
     name: "cityView",
     params: {
@@ -23,7 +32,7 @@ const previewCity = (searchResult) => {
     query: {
       lat: searchResult.geometry.coordinates[1],
       lng: searchResult.geometry.coordinates[0],
-      preview: true,
+      preview: duplicateCity.length === 0,
     },
   });
 };
