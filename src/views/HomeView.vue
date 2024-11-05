@@ -13,10 +13,15 @@ const route = useRoute();
 
 console.log("route", route.params);
 
+console.log("local", localStorage.getItem("savedCities"));
+
 const previewCity = (searchResult) => {
-  const duplicateCity = JSON.parse(localStorage.getItem("savedCities")).filter(
-    (city) => city.city === searchResult.text
-  );
+  const duplicateCity =
+    localStorage.getItem("savedCities") !== null
+      ? JSON.parse(localStorage.getItem("savedCities")).filter(
+          (city) => city.city === searchResult.text
+        )
+      : [];
 
   console.log("duplicateCity", duplicateCity);
 
